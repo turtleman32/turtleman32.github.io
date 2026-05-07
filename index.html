@@ -107,12 +107,7 @@
       font-size: 1.1rem;
     }
 
-    .trophy {
-      font-size: 5rem;
-      margin-bottom: 20px;
-    }
-
-    /* ── CHAMPION CARDS ── */
+    /* ── SECTION TITLE ── */
     .section-title {
       font-size: 0.85rem;
       letter-spacing: 4px;
@@ -121,6 +116,7 @@
       margin: 60px 0 30px;
     }
 
+    /* ── CHAMPION CARDS ── */
     .cards {
       display: flex;
       justify-content: center;
@@ -162,6 +158,52 @@
       color: #aaa;
       margin-top: 8px;
       font-style: italic;
+    }
+
+    /* ── ROSTER ── */
+    .roster-table {
+      width: 90%;
+      max-width: 700px;
+      margin: 0 auto 80px;
+      border-collapse: collapse;
+    }
+
+    .roster-table th {
+      background-color: #0f2318;
+      color: #c9a84c;
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 14px 20px;
+      border-bottom: 2px solid #c9a84c;
+    }
+
+    .roster-table td {
+      padding: 14px 20px;
+      border-bottom: 1px solid #c9a84c22;
+      font-size: 0.95rem;
+      color: #ddd;
+    }
+
+    .roster-table tr:nth-child(even) td {
+      background-color: #0f2318;
+    }
+
+    .roster-table tr:hover td {
+      background-color: #2d5a3d;
+      color: white;
+    }
+
+    .year-badge {
+      display: inline-block;
+      background-color: #2d5a3d;
+      border: 1px solid #c9a84c44;
+      color: #c9a84c;
+      font-size: 0.7rem;
+      padding: 3px 8px;
+      border-radius: 4px;
+      margin: 2px;
+      letter-spacing: 1px;
     }
 
     /* ── YEAR PAGE ── */
@@ -240,6 +282,7 @@
         <a href="#" onclick="showYear('2023')">2023</a>
       </div>
     </div>
+    <a href="#" onclick="showRoster()">Roster</a>
   </nav>
 
   <!-- MAIN HOME CONTENT -->
@@ -273,6 +316,98 @@
       </div>
     </div>
 
+  </div>
+
+  <!-- ROSTER PAGE -->
+  <div class="year-page" id="roster-page">
+    <h2>THE FIELD</h2>
+    <p class="subtitle">Official Player Roster — HSB Classic</p>
+
+    <table class="roster-table">
+      <thead>
+        <tr>
+          <th style="text-align:left;">#</th>
+          <th style="text-align:left;">Player</th>
+          <th style="text-align:left;">Years Participated</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td style="text-align:left;">Arthur Andrew Arnold</td>
+          <td style="text-align:left;">
+            <span class="year-badge">2023</span>
+            <span class="year-badge">2024</span>
+            <span class="year-badge">2025</span>
+          </td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td style="text-align:left;">Brett Hinson</td>
+          <td style="text-align:left;">
+            <span class="year-badge">2023</span>
+            <span class="year-badge">2024</span>
+            <span class="year-badge">2025</span>
+          </td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td style="text-align:left;">Cody Read Langford</td>
+          <td style="text-align:left;">
+            <span class="year-badge">2023</span>
+            <span class="year-badge">2024</span>
+            <span class="year-badge">2025</span>
+          </td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td style="text-align:left;">Connor Goin</td>
+          <td style="text-align:left;">
+            <span class="year-badge">2023</span>
+            <span class="year-badge">2024</span>
+            <span class="year-badge">2025</span>
+          </td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td style="text-align:left;">John Riley DeMasie</td>
+          <td style="text-align:left;">
+            <span class="year-badge">2023</span>
+            <span class="year-badge">2024</span>
+            <span class="year-badge">2025</span>
+          </td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td style="text-align:left;">Kyle Prochazka</td>
+          <td style="text-align:left;">
+            <span class="year-badge">2023</span>
+            <span class="year-badge">2024</span>
+            <span class="year-badge">2025</span>
+          </td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td style="text-align:left;">Nils Joseph Kosmo</td>
+          <td style="text-align:left;">
+            <span class="year-badge">2023</span>
+            <span class="year-badge">2024</span>
+            <span class="year-badge">2025</span>
+          </td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td style="text-align:left;">Reed William Giesinger</td>
+          <td style="text-align:left;">
+            <span class="year-badge">2023</span>
+            <span class="year-badge">2024</span>
+            <span class="year-badge">2025</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <button class="back-btn" onclick="showMain()">← Back to Home</button>
   </div>
 
   <!-- 2025 YEAR PAGE -->
@@ -353,13 +488,22 @@
 
   <script>
     function showYear(year) {
-      document.getElementById('main-content').classList.add('hidden');
-      document.querySelectorAll('.year-page').forEach(p => p.classList.remove('active'));
+      hideAll();
       document.getElementById('year-' + year).classList.add('active');
+    }
+
+    function showRoster() {
+      hideAll();
+      document.getElementById('roster-page').classList.add('active');
     }
 
     function showMain() {
       document.getElementById('main-content').classList.remove('hidden');
+      document.querySelectorAll('.year-page').forEach(p => p.classList.remove('active'));
+    }
+
+    function hideAll() {
+      document.getElementById('main-content').classList.add('hidden');
       document.querySelectorAll('.year-page').forEach(p => p.classList.remove('active'));
     }
   </script>
